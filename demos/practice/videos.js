@@ -43,13 +43,18 @@ function getVideos(str){
 }
 
 function totalSegXTipo(videos, type){
-  let totalSegundos = 0;
-  videos
-    .filter(video => video.type === type)
-    .forEach(video => totalSegundos = totalSegundos + video.seg + video.min * 60);
+  // let totalSegundos = 0;
+  // videos
+  //   .filter(video => video.type === type)
+  //   .forEach(video => totalSegundos = totalSegundos + video.seg + video.min * 60);
 
-    return totalSegundos;
-    // se puede utilizar el metodo reduce para lograr esto
+  //   return totalSegundos;
+  // se puede utilizar el metodo reduce para lograr esto
+
+  return videos
+    .filter(video => video.type === type)
+    //se utiliza reduce para totalizar primer parametro es el callback, segundo parametro es el valor inicial
+    .reduce((totalSegundos, video) => totalSegundos + video.seg + video.min * 60,0);
 }
 
 console.log(getVideos(str));
