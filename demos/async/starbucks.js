@@ -5,11 +5,13 @@ function procesarPedido(pedido, callBackCliente){
   switch (pedido.type) {
     case "Caramel":
       setTimeout(() => {
+        // Llamar al cliente
         callBackCliente(pedido.cliente);
       }, 4000);
       break;
     case "Te helado":
       setTimeout(() => {
+        // Llamar al cliente 
         callBackCliente(pedido.cliente);
       }, 2000);
       break;
