@@ -18,25 +18,31 @@ app.get('/', (req, res) =>{
   res.send('Hola mundo express');
 });
 
+// obtengo la lista de inventores ordenado
 app.get('/api/inventors', (req, res) =>{
   const order = req.query.order;
   console.log(order);
   res.json(inventors);
 });
 
+// obtendo el inventor cuyo ID paso por parametro
 app.get('/api/inventors/:id', (req, res) =>{
   const id = parseInt(req.params.id);
   res.json(inventors.filter(inventor => inventor._id === id));
 });
 
+// middleware se usa para que el body se pueda utilizar
 app.use(express.json());
 
+// agrego el inventor cuyo json paso por body (usar la linea de arriba sino no funciona)
 app.post('/api/inventors', (req, res) => {
+
   const inventorNuevo = req.body;
   inventorNuevo._id = 8;
   res.json(inventorNuevo)
 });
 
+// levanto el server y lo dejo escuchando en el PORT
 app.listen(PORT,() =>{
   console.log(chalk.bgGreen(`Server express levantado en el puerto ${PORT}`));
 });
